@@ -14,3 +14,25 @@
   for = "/images/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Always revalidate HTML so edits show immediately (no stale pages)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CSS/JS revalidate too (short cache)
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
