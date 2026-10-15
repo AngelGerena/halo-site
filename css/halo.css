@@ -1,0 +1,70 @@
+/* HALO brand layer — overrides the engine's Finesse defaults.
+   Loaded AFTER immersive.css so these win. */
+html{font-variant-emoji:text}
+html,body{max-width:100%;overflow-x:hidden}
+
+:root{
+  --im-bg:#0a0410;
+  --im-ink:#ffffff;
+  --im-muted:#b9b2c4;
+  --im-accent:#ffb86b;              /* warm champagne-gold, matches the film */
+  --im-line:#ffffff22;
+  --im-serif:'Fraunces',Georgia,serif;
+  --im-sans:'Space Grotesk',system-ui,Arial,sans-serif;
+  --halo-pink:#ff3d81;
+}
+
+/* headline wordmark */
+.im-hero h1{
+  font-family:'Anton',sans-serif;
+  font-size:clamp(84px,15vw,230px);
+  line-height:.82;letter-spacing:.03em;
+  margin:18px 0 20px;
+  color:#fff;
+  text-shadow:0 10px 60px rgba(0,0,0,.5);
+}
+.hero-sub{font-size:clamp(14px,1.5vw,17px)!important;line-height:1.7!important;color:#d6d1de!important}
+em{color:var(--im-accent)}
+
+/* buttons */
+.btn-primary,.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 32px;border-radius:999px;font-weight:700;font-size:15px;
+  letter-spacing:.01em;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;
+}
+.btn-primary{background:#fff;color:#0a0410;box-shadow:0 8px 30px rgba(255,255,255,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.3)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
+.im-actions.secondary{gap:28px;margin-top:22px}
+
+/* landing section — the film lands here on the halo installation.
+   Uses the film's own end frame as a full-bleed backdrop for a seamless handoff. */
+.halo-land{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:12vh 7%;
+  background:linear-gradient(180deg,rgba(10,4,16,.55),rgba(10,4,16,.82)),url("../images/film-end.webp") center/cover no-repeat;
+  background-color:#0a0410}
+.halo-land-glow{position:absolute;top:8%;left:50%;transform:translateX(-50%);
+  width:min(80vw,620px);height:min(80vw,620px);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,184,107,.28),rgba(255,61,129,.12) 45%,transparent 68%);
+  filter:blur(10px);animation:haloPulse 6s ease-in-out infinite}
+@keyframes haloPulse{0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
+.halo-land-inner{position:relative;z-index:2;max-width:760px}
+.halo-land h2{font-family:'Anton',sans-serif;font-size:clamp(44px,8vw,104px);line-height:.9;letter-spacing:.01em}
+.halo-land h2 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+.halo-land-sub{font-size:clamp(15px,2vw,19px);line-height:1.7;color:#d6d1de;margin:22px auto 30px;max-width:620px}
+.halo-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.halo-trust{margin-top:22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--im-muted)}
+
+/* next section placeholder */
+.halo-next{padding:14vh 7%;text-align:center;background:#0a0410}
+.halo-next h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,3vw,30px);color:#cfc9d8;max-width:680px;margin:14px auto 0;line-height:1.4}
+.halo-credit{margin-top:40px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--im-muted)}
+.halo-credit a{color:var(--im-accent);text-decoration:none}
+
+/* mobile: hero copy anchored lower, headline a touch tighter */
+@media (max-width:760px){
+  .im-hero{top:auto;bottom:18%;left:6%;right:6%}
+  .im-hero h1{font-size:clamp(84px,30vw,150px)}
+  .im-actions{gap:12px}
+  .btn-primary,.btn-ghost{padding:13px 26px;font-size:14px}
+}

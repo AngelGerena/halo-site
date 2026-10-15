@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0410">
+  <title>HALO | Every moment, gathered</title>
+  <meta name="description" content="One QR code turns every guest into your event photographer. Every photo, gathered in one glowing gallery.">
+  <link rel="preload" as="image" href="images/film-poster.webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/immersive.css">
+  <link rel="stylesheet" href="css/halo.css">
+</head>
+<body>
+
+  <!-- SCENE: THE GALLERY FLYTHROUGH -->
+  <section class="im-scene" id="home" data-im-scene
+           data-im-play-label="Entering the gallery"
+           style="--im-runway:520svh; --im-runway-mobile:420svh"
+           aria-label="HALO: a cinematic walk through a gallery of event photographs toward a glowing halo of light">
+    <div class="im-stage">
+
+      <div class="im-film">
+        <video data-src="images/film-desktop.mp4" data-src-mobile="images/film-mobile.mp4"
+               muted playsinline preload="none" poster="images/film-poster.webp"
+               aria-label="The camera glides from a dark gallery entrance down a corridor of lit event photographs and arrives facing an enormous glowing ring of light."></video>
+        <img class="im-poster" src="images/film-poster.webp" alt="A dark luxury gallery entrance glowing with warm gold light." fetchpriority="high">
+      </div>
+      <div class="im-shade"></div>
+
+      <!-- Hero -->
+      <div class="im-hero" data-im-fade-out="0,0.14" data-im-lift="28">
+        <p class="eyebrow">EVERY EVENT DESERVES THIS</p>
+        <h1>HALO</h1>
+        <p class="hero-sub">One QR code.<br>Every guest a photographer.</p>
+        <div class="im-actions">
+          <a class="btn-primary" href="#start">Try It Free</a>
+          <a class="btn-ghost" href="#buy">Buy Now</a>
+        </div>
+        <div class="im-actions secondary">
+          <button class="text-link" data-im-play="home">Play the journey <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
+          <a class="text-link" href="#start">Skip the experience <span aria-hidden="true">&darr;&#xFE0E;</span></a>
+        </div>
+      </div>
+
+      <!-- Chapters -->
+      <div class="im-chapter" data-im-range="0.18,0.40">
+        <p class="eyebrow">01 / THE ARRIVAL</p>
+        <h2>Every angle of your day.<br><em>Captured by everyone there.</em></h2>
+      </div>
+      <div class="im-chapter" data-im-range="0.40,0.74">
+        <p class="eyebrow">02 / THE CORRIDOR</p>
+        <h2>Every guest becomes a photographer.<br><em>Their shots, gathered as they happen.</em></h2>
+      </div>
+      <div class="im-chapter" data-im-range="0.74,0.97">
+        <p class="eyebrow">03 / THE HALO</p>
+        <h2>Your whole event.<br><em>One glowing ring.</em></h2>
+      </div>
+
+      <nav class="im-chapter-nav" aria-label="Story chapters">
+        <button data-im-goto="0.22" data-im-active="0,0.40">01</button>
+        <button data-im-goto="0.50" data-im-active="0.40,0.74">02</button>
+        <button data-im-goto="0.85" data-im-active="0.74,1.01">03</button>
+      </nav>
+
+      <div class="im-footer">
+        <span>FOR WEDDINGS, QUINCE&Ntilde;OS,<br>CHURCHES &amp; EVERY CELEBRATION</span>
+        <span class="im-scroll-prompt">SCROLL TO ENTER</span>
+        <a href="#start">Skip the experience <span aria-hidden="true">&darr;&#xFE0E;</span></a>
+      </div>
+      <div class="im-progress"><span></span></div>
+      <button class="im-motion-toggle" data-im-motion-toggle aria-pressed="false">Reduce motion</button>
+      <p class="im-status" data-im-status role="status" hidden></p>
+    </div>
+  </section>
+
+  <!-- LANDING SECTION — matches the film's final frame (the halo installation) -->
+  <section id="start" class="halo-land">
+    <div class="halo-land-glow"></div>
+    <div class="halo-land-inner">
+      <p class="eyebrow">THIS IS HALO</p>
+      <h2>Every moment,<br><em>gathered.</em></h2>
+      <p class="halo-land-sub">Scan one QR code and every photo your guests take flows into a single live gallery &mdash; auto-curated, beautifully edited, ready to relive and share the moment the party ends.</p>
+      <div class="halo-cta-row">
+        <a class="btn-primary" href="#buy">Try It Free</a>
+        <a class="btn-ghost" href="#buy">Buy Now</a>
+      </div>
+      <p class="halo-trust">No app to download &middot; Live slideshow &middot; Bilingual EN / ES</p>
+    </div>
+  </section>
+
+  <!-- placeholder for the rest of the page (pricing, features, footer) -->
+  <section id="buy" class="halo-next">
+    <p class="eyebrow">NEXT</p>
+    <h3>Pricing, features and the rest of the page build here.</h3>
+    <p class="halo-credit">Crafted by <a href="https://finessemedia.pro" target="_blank" rel="noopener">Finesse Media</a></p>
+  </section>
+
+  <div class="im-playback" data-im-playback hidden>
+    <span data-im-playback-label>Playing</span>
+    <button data-im-stop>Pause animation</button>
+  </div>
+
+  <script src="js/immersive.js" defer></script>
+</body>
+</html>
