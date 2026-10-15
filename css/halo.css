@@ -1,70 +1,112 @@
-/* HALO brand layer — overrides the engine's Finesse defaults.
-   Loaded AFTER immersive.css so these win. */
+/* HALO marketing site — standalone stylesheet (static hero, no video) */
 html{font-variant-emoji:text}
-html,body{max-width:100%;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{
+  font-family:'Space Grotesk',system-ui,Arial,sans-serif;
+  background:#0a0410;color:#fff;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;cursor:pointer}
+h1,h2,h3{margin:0;font-weight:400}
+em{font-style:italic}
 
 :root{
-  --im-bg:#0a0410;
-  --im-ink:#ffffff;
-  --im-muted:#b9b2c4;
-  --im-accent:#ffb86b;              /* warm champagne-gold, matches the film */
-  --im-line:#ffffff22;
-  --im-serif:'Fraunces',Georgia,serif;
-  --im-sans:'Space Grotesk',system-ui,Arial,sans-serif;
-  --halo-pink:#ff3d81;
+  --c1:#ff3d81;--c2:#7b2ff7;--c3:#ffb86b;--c4:#00c2cb;--ink:#0a0410;
+  --accent:#ffb86b;--muted:#b9b2c4;
 }
 
-/* headline wordmark */
-.im-hero h1{
-  font-family:'Anton',sans-serif;
-  font-size:clamp(84px,15vw,230px);
-  line-height:.82;letter-spacing:.03em;
-  margin:18px 0 20px;
-  color:#fff;
-  text-shadow:0 10px 60px rgba(0,0,0,.5);
-}
-.hero-sub{font-size:clamp(14px,1.5vw,17px)!important;line-height:1.7!important;color:#d6d1de!important}
-em{color:var(--im-accent)}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0}
 
-/* buttons */
+/* ---------------- BUTTONS ---------------- */
 .btn-primary,.btn-ghost{
   display:inline-flex;align-items:center;justify-content:center;
   padding:15px 32px;border-radius:999px;font-weight:700;font-size:15px;
-  letter-spacing:.01em;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s;
+  transition:transform .2s,box-shadow .2s,background .2s;
 }
 .btn-primary{background:#fff;color:#0a0410;box-shadow:0 8px 30px rgba(255,255,255,.18)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.32)}
 .btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
 .btn-ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.08)}
-.im-actions.secondary{gap:28px;margin-top:22px}
 
-/* landing section — the film lands here on the halo installation.
-   Uses the film's own end frame as a full-bleed backdrop for a seamless handoff. */
-.halo-land{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:12vh 7%;
-  background:linear-gradient(180deg,rgba(10,4,16,.55),rgba(10,4,16,.82)),url("../images/film-end.webp") center/cover no-repeat;
+/* ---------------- HERO ---------------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden;background:#07030d}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url("../images/film-end.webp") center/cover no-repeat;
+  transform:scale(1.08);animation:heroZoom 24s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1.16)}}
+/* keep left side dark for the copy; warm up the center ring */
+.hero-vignette{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(7,3,13,.86) 0%,rgba(7,3,13,.5) 42%,rgba(7,3,13,.15) 72%,transparent 100%),
+    linear-gradient(0deg,rgba(7,3,13,.9) 0%,transparent 28%,transparent 72%,rgba(7,3,13,.55) 100%),
+    radial-gradient(60% 55% at 62% 42%,rgba(255,184,107,.12),transparent 70%);
+}
+.hero-grain{
+  position:absolute;inset:-60%;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .5s steps(2) infinite;
+}
+@keyframes grain{0%{transform:translate(0,0)}50%{transform:translate(-2%,1.5%)}100%{transform:translate(1.5%,-2%)}}
+
+.hero-content{position:relative;z-index:5;width:100%;max-width:1320px;padding:0 7.2%}
+.hero-mark{
+  font-family:'Anton',sans-serif;letter-spacing:.03em;line-height:.82;
+  font-size:clamp(90px,16vw,240px);margin:16px 0 20px;
+  color:#fff;text-shadow:0 12px 60px rgba(0,0,0,.55);
+}
+.hero-sub{font-size:clamp(15px,1.7vw,19px);line-height:1.7;color:#e7e3ee;margin:0 0 28px;max-width:520px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-niche{margin-top:26px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.hero-scroll{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:6;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:.22em;color:rgba(255,255,255,.7)}
+.hero-scroll-line{width:1px;height:42px;background:linear-gradient(var(--accent),transparent);animation:scrollBob 2s ease-in-out infinite}
+@keyframes scrollBob{0%,100%{opacity:.5;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------------- "THIS IS HALO" SECTION ---------------- */
+.halo-land{position:relative;min-height:92svh;display:grid;place-items:center;text-align:center;overflow:hidden;padding:12vh 7%;
+  background:linear-gradient(180deg,rgba(10,4,16,.6),rgba(10,4,16,.86)),url("../images/film-end.webp") center/cover no-repeat;
   background-color:#0a0410}
-.halo-land-glow{position:absolute;top:8%;left:50%;transform:translateX(-50%);
+.halo-land-glow{position:absolute;top:6%;left:50%;transform:translateX(-50%);
   width:min(80vw,620px);height:min(80vw,620px);border-radius:50%;
-  background:radial-gradient(circle,rgba(255,184,107,.28),rgba(255,61,129,.12) 45%,transparent 68%);
-  filter:blur(10px);animation:haloPulse 6s ease-in-out infinite}
+  background:radial-gradient(circle,rgba(255,184,107,.26),rgba(255,61,129,.12) 45%,transparent 68%);
+  filter:blur(12px);animation:haloPulse 6s ease-in-out infinite;pointer-events:none}
 @keyframes haloPulse{0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
 .halo-land-inner{position:relative;z-index:2;max-width:760px}
 .halo-land h2{font-family:'Anton',sans-serif;font-size:clamp(44px,8vw,104px);line-height:.9;letter-spacing:.01em}
-.halo-land h2 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+.halo-land h2 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--accent)}
 .halo-land-sub{font-size:clamp(15px,2vw,19px);line-height:1.7;color:#d6d1de;margin:22px auto 30px;max-width:620px}
 .halo-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.halo-trust{margin-top:22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--im-muted)}
+.halo-trust{margin-top:22px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 
-/* next section placeholder */
+/* ---------------- NEXT / CREDIT ---------------- */
 .halo-next{padding:14vh 7%;text-align:center;background:#0a0410}
 .halo-next h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(20px,3vw,30px);color:#cfc9d8;max-width:680px;margin:14px auto 0;line-height:1.4}
-.halo-credit{margin-top:40px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--im-muted)}
-.halo-credit a{color:var(--im-accent);text-decoration:none}
+.halo-credit{margin-top:40px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.halo-credit a{color:var(--accent)}
 
-/* mobile: hero copy anchored lower, headline a touch tighter */
+/* ---------------- MOBILE ---------------- */
 @media (max-width:760px){
-  .im-hero{top:auto;bottom:18%;left:6%;right:6%}
-  .im-hero h1{font-size:clamp(84px,30vw,150px)}
-  .im-actions{gap:12px}
+  .hero-content{padding:0 6%}
+  .hero-mark{font-size:clamp(90px,28vw,150px)}
+  .hero-sub{font-size:16px}
+  .hero-cta{gap:12px}
   .btn-primary,.btn-ghost{padding:13px 26px;font-size:14px}
+  /* on phones, darken more and bias the image so the ring stays visible */
+  .hero-vignette{background:
+    linear-gradient(180deg,rgba(7,3,13,.55) 0%,rgba(7,3,13,.2) 40%,rgba(7,3,13,.88) 100%),
+    radial-gradient(70% 50% at 50% 38%,rgba(255,184,107,.14),transparent 70%)}
+  .hero-bg{background-position:60% center}
+  .hero-content{align-self:end;padding-bottom:16vh}
+}
+
+/* ---------------- REDUCED MOTION ---------------- */
+@media (prefers-reduced-motion:reduce){
+  .hero-bg,.hero-grain,.hero-scroll-line,.halo-land-glow{animation:none}
+  .hero-bg{transform:scale(1.05)}
 }
