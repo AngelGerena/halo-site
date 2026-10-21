@@ -1,8 +1,9 @@
-# GitHub -> Netlify deploy. Static site, no build step.
-# Publish the repo root as-is.
+# GitHub -> Netlify deploy. Static site, no build step for the pages.
+# Publish the repo root as-is; serverless functions live in netlify/functions.
 [build]
   publish = "."
   command = ""
+  functions = "netlify/functions"
 
 [[headers]]
   for = "/images/*.mp4"

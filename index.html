@@ -23,7 +23,7 @@
       <h1 class="hero-mark">HALO</h1>
       <p class="hero-sub">One QR code.<br>Every guest a photographer.</p>
       <div class="hero-cta">
-        <a class="btn-primary" href="#pricing">Try It Free</a>
+        <a class="btn-primary" href="#signup">Try It Free</a>
         <a class="btn-ghost" href="#pricing">See Plans</a>
       </div>
       <p class="hero-niche">For weddings, quincea&ntilde;eras, churches &amp; every celebration</p>
@@ -149,7 +149,7 @@
             <li>Gallery live for 7 days</li>
             <li>Bulk ZIP download</li>
           </ul>
-          <a class="btn-ghost full" href="#">Try It Free</a>
+          <a class="btn-ghost full" href="#signup">Try It Free</a>
         </div>
         <div class="tier featured">
           <span class="badge">Most popular</span>
@@ -162,7 +162,7 @@
             <li>Email + bulk ZIP download</li>
             <li>Gallery live for 30 days</li>
           </ul>
-          <a class="btn-primary full" href="#">Get Started</a>
+          <a class="btn-primary full" href="#signup">Get Started</a>
         </div>
         <div class="tier">
           <h3>Premier</h3>
@@ -173,7 +173,7 @@
             <li>Gallery live for 30 days</li>
             <li>Priority support</li>
           </ul>
-          <a class="btn-ghost full" href="#">Get Started</a>
+          <a class="btn-ghost full" href="#signup">Get Started</a>
         </div>
       </div>
 
@@ -188,7 +188,7 @@
             <li>Live slideshow</li>
             <li>Email + bulk ZIP download</li>
           </ul>
-          <a class="btn-ghost full" href="#">Try It Free</a>
+          <a class="btn-ghost full" href="#signup">Try It Free</a>
         </div>
         <div class="tier featured">
           <span class="badge">Best value</span>
@@ -218,6 +218,35 @@
     </div>
   </section>
 
+  <!-- ============ EARLY ACCESS SIGNUP ============ -->
+  <section class="band dark" id="signup">
+    <div class="wrap center">
+      <p class="eyebrow center">Founding access</p>
+      <h2 class="display">Be a <em>founding member</em></h2>
+      <p class="lead">Tell us about your event and we&rsquo;ll reach out with early access and locked-in founding pricing the moment we launch.</p>
+
+      <form class="signup-form" id="signupForm" novalidate>
+        <div class="signup-grid">
+          <input class="field" name="church" type="text" placeholder="Organization or event name" autocomplete="organization">
+          <input class="field" name="name" type="text" placeholder="Your name" autocomplete="name">
+          <input class="field" name="email" type="email" placeholder="Email address" autocomplete="email">
+          <input class="field" name="size" type="text" placeholder="Approx. number of guests">
+          <input class="field wide" name="eventType" type="text" placeholder="Type of event (wedding, quinceañera, church, etc.)">
+          <input class="field wide" name="budget" type="text" placeholder="What would you expect to pay? (optional)">
+        </div>
+        <p class="signup-err" id="signupErr" hidden></p>
+        <button class="btn-primary full" type="submit" id="signupBtn">Request early access</button>
+        <p class="signup-fine">No spam. We&rsquo;ll only use this to contact you about HALO.</p>
+      </form>
+
+      <div class="signup-done" id="signupDone" hidden>
+        <div class="signup-check" aria-hidden="true">&#10003;</div>
+        <h3 class="signup-done-h">Thank you!</h3>
+        <p class="lead">We&rsquo;ve got your request &mdash; we&rsquo;ll reach out with early access and founding pricing soon. Check your inbox for a confirmation.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FINAL CTA ============ -->
   <section class="band cta" id="cta">
     <div class="cta-glow"></div>
@@ -225,7 +254,7 @@
       <h2 class="display">Your event.<br><em>Every angle.</em></h2>
       <p class="lead">One QR code. Every guest a photographer. Every moment, gathered.</p>
       <div class="hero-cta center-cta">
-        <a class="btn-primary" href="#pricing">Try It Free</a>
+        <a class="btn-primary" href="#signup">Try It Free</a>
         <a class="btn-ghost" href="#pricing">See Plans</a>
       </div>
     </div>
